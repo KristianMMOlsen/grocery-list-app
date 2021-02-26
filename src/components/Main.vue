@@ -10,7 +10,7 @@
     <!-- row for the textfield for adding items -->
     <div class="row justify-content-center">
       <div class="col-6 pr-0">
-        <div class="form-floating">
+        <div class="form-group">
           <input
             v-model="newItem"
             type="text"
@@ -29,7 +29,7 @@
     <!-- row for the text area listing items -->
     <div class="row justify-content-center mt-3">
       <div class="col-10">
-        <ul class="list-group overflow-auto shadow text-left">
+        <ul class="list-group overflow-auto shadow">
           <!-- v-for that loops through the items array, and lists them as an unordered list if there are items to list -->
           <li
             class="list-group-item"
@@ -38,13 +38,34 @@
           >
             {{ item }}
             <!-- button that when clicked removes targeted items from the list by using the removeItem function -->
-            <span
-              v-on:click="removeItem(index)"
-              type="button"
-              id="removeItem"
-              class="text-center"
-              >X</span
-            >
+            <span v-on:click="removeItem(index)" type="button" id="removeItem"
+              >
+              <!-- the svg is the icon for the trashcan on the remove button -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                focusable="false"
+                width="1em"
+                height="1em"
+                style="
+                  -ms-transform: rotate(360deg);
+                  -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+                "
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 16 16"
+              >
+                <g fill="#626262">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                  />
+                </g></svg
+            ></span>
           </li>
         </ul>
       </div>
@@ -98,13 +119,14 @@ export default {
   padding: 0;
 }
 /* styling for the list, also breaks long words automatically
-    to prevent them going outside it's div */
+   to prevent them going outside it's div */
 ul {
   width: 100%;
   height: 461px;
   list-style-type: none;
   padding: 0;
   word-wrap: break-word;
+  float: left;
 }
 /* makes every other line in the list light grey background */
 li:nth-child(even) {
@@ -112,11 +134,11 @@ li:nth-child(even) {
 }
 /* styling for the button that removes items from the list */
 #removeItem {
-  background-color: red;
-  width: 21px;
-  height: 21px;
-  border-radius: 50%;
-  color: white;
   float: right;
+  color: black;
+}
+/* aligns the text on the list items to the left */
+.list-group-item {
+  text-align: left;
 }
 </style>
